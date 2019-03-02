@@ -1,0 +1,16 @@
+<?PHP
+require('connection.php');
+
+$dbname="your database name";
+$sql = "SELECT id, username, firstname FROM users"; //your sql command
+$result = $conn->query($sql); //runs the query and puts the results in result
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "id: " . $row["ID"]. " - Username: " . $row["username"]. " - Firstname: " . $row["Firstname"]. "<br>";
+    }
+} else {
+    echo "No results";
+}
+$conn->close();
+?>
